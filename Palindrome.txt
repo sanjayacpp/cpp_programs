@@ -1,0 +1,65 @@
+-----------------------------------------------------------------------------
+Question 1. Create a function to determine if a word or phrase is a palindrome.
+The function will take as input a string and return a boolean that is true if the
+word or phrase is a palindrome and false otherwise.
+-----------------------------------------------------------------------------
+#include <iostream>
+#include <string>
+using namespace std;
+
+bool IsPalindromic(string& strInput);
+
+int main()
+{
+   string str;
+   cout << "Enter a string to check for palindromic: ";
+   getline(cin, str);
+   cout << "\"" << str << "\"" <<  " is " << (IsPalindromic(str) ? "" : "NOT") << " palindromic";
+}
+
+/**
+* @description: A function to check whether the given string is palindromic or not
+* @params: strInput - input string
+* @return: bool - true if palindromic, false otherwise
+*/
+bool IsPalindromic(string& strInput)
+{
+   size_t size = strInput.length();
+   for (int i = 0; i <= size / 2; i++)
+   {
+      if (toupper(strInput.at(i)) != toupper(strInput.at(strInput.length() - 1 - i)))
+      {
+         return false;
+      }
+   }
+   return true;
+}
+*********************************************************************************************
+Testcase-1
+-----------------
+Enter a string to check for palindromic: 19591
+"19591" is  palindromic
+Testcase-2
+-----------------
+Enter a string to check for palindromic: 2002
+"2002" is  palindromic
+Testcase-3
+-----------------
+Enter a string to check for palindromic: 1587
+"1587" is NOT palindromic
+Testcase-4
+-----------------
+Enter a string to check for palindromic: madam madam madam
+"madam madam madam" is  palindromic
+Testcase-5
+-----------------
+Enter a string to check for palindromic: Step on no pets
+"Step on no pets" is  palindromic
+Testcase-6
+-----------------
+Enter a string to check for palindromic: Dad
+"Dad" is  palindromic
+Testcase-7
+-----------------
+Enter a string to check for palindromic: A quick clever brown fox jumps over the lazy Dog
+"A quick clever brown fox jumps over the lazy Dog" is NOT palindromic
